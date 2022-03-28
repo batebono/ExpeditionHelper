@@ -26,9 +26,9 @@ namespace ExpeditionHelper
             const string markerPath = "Metadata/MiscellaneousObjects/Expedition/ExpeditionMarker";
             foreach (var e in GameController.EntityListWrapper.ValidEntitiesByType[EntityType.IngameIcon].OrderBy(x => x.Path != markerPath))
             {
-                var renderComponent = e?.GetComponent<Render>();
+                var renderComponent = e.GetComponent<Render>();
                 if (renderComponent == null) continue;
-                var expeditionChestComponent = e?.GetComponent<ObjectMagicProperties>();
+                var expeditionChestComponent = e.GetComponent<ObjectMagicProperties>();
                 if (expeditionChestComponent == null) continue;
                 var mods = expeditionChestComponent.Mods;
                 DebugWindow.LogError($"{mods}");
