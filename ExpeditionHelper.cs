@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,12 +23,16 @@ namespace ExpeditionHelper
         }
         public override void Render()
         {
-            var renderComponent = e?.GetComponent<Render>();
-            if (renderComponent == null) continue;
-            var expeditionChestComponent = e?.GetComponent<ObjectMagicProperties>();
-            if (expeditionChestComponent == null) continue;
-            var mods = expeditionChestComponent.Mods;
-            DebugWindow.LogError($"{mods}");
+            foreach (var e in GameController.EntityListWrapper.ValidEntitiesByType[EntityType.IngameIcon])
+            {
+                var renderComponent = e?.GetComponent<Render>();
+                if (renderComponent == null) continue;
+                var expeditionChestComponent = e?.GetComponent<ObjectMagicProperties>();
+                if (expeditionChestComponent == null) continue;
+                var mods = expeditionChestComponent.Mods;
+                DebugWindow.LogError($"{mods}");
+            }
+
         }
     }
 }
