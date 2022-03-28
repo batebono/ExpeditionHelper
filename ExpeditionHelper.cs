@@ -16,11 +16,19 @@ namespace ExpeditionHelper
 {
     public class ExpeditionHelper : BaseSettingsPlugin<ExpeditionHelperSettings>
     {
-        var renderComponent = e?.GetComponent<Render>();
-        if (renderComponent == null) continue;
-        var expeditionChestComponent = e?.GetComponent<ObjectMagicProperties>();
-        if (expeditionChestComponent == null) continue;
-        var mods = expeditionChestComponent.Mods;
-        DebugWindow.LogError($"{mods}");
+        public override bool Initialise()
+        {
+            CanUseMultiThreading = true;
+            return base.Initialise();
+        }
+        public override void Render()
+        {
+            var renderComponent = e?.GetComponent<Render>();
+            if (renderComponent == null) continue;
+            var expeditionChestComponent = e?.GetComponent<ObjectMagicProperties>();
+            if (expeditionChestComponent == null) continue;
+            var mods = expeditionChestComponent.Mods;
+            DebugWindow.LogError($"{mods}");
+        }
     }
 }
