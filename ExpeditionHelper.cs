@@ -23,7 +23,8 @@ namespace ExpeditionHelper
         }
         public override void Render()
         {
-            foreach (var e in GameController.EntityListWrapper.ValidEntitiesByType[EntityType.IngameIcon])
+            const string markerPath = "Metadata/MiscellaneousObjects/Expedition/ExpeditionMarker";
+            foreach (var e in GameController.EntityListWrapper.ValidEntitiesByType[EntityType.IngameIcon].OrderBy(x => x.Path != markerPath))
             {
                 var renderComponent = e?.GetComponent<Render>();
                 if (renderComponent == null) continue;
