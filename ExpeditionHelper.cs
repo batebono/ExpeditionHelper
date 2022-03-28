@@ -31,8 +31,8 @@ namespace ExpeditionHelper
                 var expeditionChestComponent = e.GetComponent<ObjectMagicProperties>();
                 if (expeditionChestComponent == null) continue;
                 var mods = expeditionChestComponent.Mods;
-                LogMessage(mods.Any);
-                LogMsg('test');
+                DebugWindow.LogMessage(mods.Any);
+                DebugWindow.LogMsg('test');
             }
 
         }
